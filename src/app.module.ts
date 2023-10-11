@@ -16,7 +16,12 @@ import { configValidationSchema } from './config.schema';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
+        const isProduction = configService.get('STAGE') === 'prod';
         return {
+          ssl: isProduction,
+          extra: {
+            ssl: isProduction ? { rejectUnautorized: false } : null,
+          },
           type: 'postgres',
           host: configService.get('DB_HOST'),
           port: configService.get('PORT'),
