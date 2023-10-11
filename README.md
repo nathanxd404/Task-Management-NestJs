@@ -45,6 +45,16 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Running the app with docker
+
+```bash
+# run
+$ docker-compose up
+
+# run in detache mode
+$ docker-compose up -d
+```
+
 ## Test
 
 ```bash
